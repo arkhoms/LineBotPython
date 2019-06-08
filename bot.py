@@ -18,5 +18,19 @@ def callback():
   sendText(user,'งง') # ส่งข้อความ งง
   return '',200
 
+def sendText(user, text):
+  LINE_API = 'https://api.line.me/v2/bot/message/reply'
+  Authorization = 'Bearer ENTER_ACCESS_TOKEN' # ใส่ ENTER_ACCESS_TOKEN เข้าไป
+  headers = {
+  'Content-Type': 'application/json; charset=UTF-8',
+  'Authorization':Authorization
+  }
+  data = json.dumps({
+  "replyToken":user,
+  "messages":[{"type":"text","text":text}]})
+  #print("ข้อมูล：",data)
+  r = requests.post(LINE_API, headers=headers, data=data) # ส่งข้อมูล
+  #print(r.text)
+
 if __name__ == "__main__":
     app.run()
