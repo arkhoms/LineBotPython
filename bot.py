@@ -36,4 +36,4 @@ def sendText(user, text):
   #print(r.text)
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run()
