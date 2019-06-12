@@ -19,10 +19,11 @@ handler = WebhookHandler(os.environ['CHANNEL_SECRET'])
 
 @app.route("/")
 def index():
-    return "Hello world สวัสดีชาวโลก"
+    return "Hello World สวัสดีชาวโลก"
 
 @app.route("/callback", methods=['POST'])
 def callback():
+#    return "ok"
     # get X-Line-Signature header value
     signature = request.headers['X-Line-Signature']
 
@@ -44,11 +45,10 @@ def callback():
 def handle_message(event):
     line_bot_api.reply_message(
         event.reply_token,
-#       TextSendMessage(text=event.message.text)
+#        TextSendMessage(text=event.message.text)
         TextSendMessage(text="สบายดีไหม")
     )
 
 
 if __name__ == "__main__":
     app.run()
-    
